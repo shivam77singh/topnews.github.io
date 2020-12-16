@@ -10,15 +10,17 @@ let prev;
 
 for (let i = 0; i < 6; i++) {
 
-    for(let j=0;j<6;j++){
-        if( btns[j].style.background === 'rgb(154, 154, 255)'){
-            btns[j].style.background = 'transparent';
-        }
-    }
+   
 
     btns[i].addEventListener('click', () => {
 
-
+        
+         for(let j=0;j<6;j++){
+            if( btns[j].style.background === 'rgb(154, 154, 255)'){
+            btns[j].style.background = 'transparent';
+           }
+         }
+        
         btns[i].style.background = 'rgb(154, 154, 255)';
        
 //         document.querySelector('.head').style.margin = '5rem';
