@@ -1,5 +1,4 @@
-console.log("working");
-
+// console.log("working");
 
 
 
@@ -10,29 +9,29 @@ let prev;
 
 for (let i = 0; i < 6; i++) {
 
-   
+
 
     btns[i].addEventListener('click', () => {
 
-        
-         for(let j=0;j<6;j++){
-            if( btns[j].style.background === 'rgb(154, 154, 255)'){
-            btns[j].style.background = 'transparent';
-           }
-         }
-        
+        document.getElementsByClassName('head')[0].scrollIntoView();
+        for (let j = 0; j < 6; j++) {
+            if (btns[j].style.background === 'rgb(154, 154, 255)') {
+                btns[j].style.background = 'transparent';
+            }
+        }
+
         btns[i].style.background = 'rgb(154, 154, 255)';
-       
-//         document.querySelector('.head').style.margin = '5rem';
+
+        // document.querySelector('.head').style.margin = '5rem';
         let xhr = new XMLHttpRequest();
 
-        
+
 
         xhr.open('GET', `http://newsapi.org/v2/top-headlines?country=in&category=${CAT[i]}&apiKey=3804253855244010b346e6028aa9cb41`, true);
 
-        xhr.onprogress = function () {
-            console.log('progress');
-        }
+        // xhr.onprogress = function () {
+        //     console.log('progress');
+        // }
 
         xhr.onload = function () {
             if (this.status === 200) {
@@ -41,7 +40,7 @@ for (let i = 0; i < 6; i++) {
                 let info = obj.articles;
                 let str = "";
                 for (key in info) {
-                    console.log('inside for loop');
+                    // console.log('inside for loop');
                     str += `
                     <div class="news">
                       <div class="author-title">
@@ -53,14 +52,14 @@ for (let i = 0; i < 6; i++) {
                       </div>
                       <div class="content">
                         <p class="main-content">${info[key].content}
-                        <a href="${info[key].url}">Read More Here</a>
+                        <a class="link" href="${info[key].url}">Read More Here</a>
                         </p>
                        </div>
                     </div>
                      `;
                 }
 
-                console.log(info);
+                // console.log(info);
 
                 let lists = document.querySelector('.news-collection');
                 lists.innerHTML = str;
@@ -70,7 +69,7 @@ for (let i = 0; i < 6; i++) {
 
                 for (let key = 0; key <= news.length; key++) {
                     news[key].addEventListener('click', () => {
-                        console.log(news[key]);
+                        // console.log(news[key]);
                         let nodes = news[key].childNodes;
                         console.log(nodes);
                         document.querySelector('.active-news-container').style.display = 'flex';
@@ -106,6 +105,7 @@ for (let i = 0; i < 6; i++) {
                                 elem.remove();
                             }
 
+
                         });
                     });
                 }
@@ -121,13 +121,30 @@ for (let i = 0; i < 6; i++) {
 
         xhr.send();
 
-       
+
 
     });
 
-   
+    window.addEventListener('scroll', () => {
+        if (window.scrollY >= 300) {
+            document.getElementsByClassName('btns')[0].classList.add('side-btns');
+            document.getElementsByClassName('news-page')[0].style.width = '80%';
+            document.getElementsByClassName('news-collection')[0].classList.add('side-news');
+
+            //animating buttons
+            
+
+        }
+        else {
+            document.getElementsByClassName('btns')[0].classList.remove('side-btns');
+            document.getElementsByClassName('news-page')[0].style.width = '100%';
+            document.getElementsByClassName('news-collection')[0].classList.remove('side-news');
+        }
+    });
 
 }
+
+// side buttons
 
 
 
@@ -138,7 +155,7 @@ for (let i = 0; i < 6; i++) {
 // writing effect
 
 
-const texts = ["Get the Worlds Top News ", "Get the Latest News ", "Get the Top Headlines "];
+const texts = ["Get the Worlds Best News ", "Get the Latest Updates ", "Get the Top Headlines "];
 let id = 0;
 let str_id = 0;
 let str = "";
