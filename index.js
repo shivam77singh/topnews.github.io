@@ -21,7 +21,7 @@ for (let i = 0; i < 6; i++) {
 
         btns[i].style.background = 'rgb(154, 154, 255)';
        
-        document.querySelector('.head').style.margin = '5rem';
+//         document.querySelector('.head').style.margin = '5rem';
         let xhr = new XMLHttpRequest();
 
         
