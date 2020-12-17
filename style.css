@@ -15,6 +15,7 @@
     background-color: rgba(0, 0, 0, 0.5);
     background-size: cover;
     background-position: center;
+    /* background: linear-gradient(to bottom,rgb(255, 102, 75), tomato, rgb(67, 67, 255)); */
 }
 
 .bg img{
@@ -47,7 +48,7 @@
 
 .btn:hover{
     cursor: pointer;
-    background-color: rgb(160, 169, 255);
+    background-color: rgb(31, 110, 255);
 }
 
 
@@ -118,26 +119,81 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
+    margin-left: 100px;
 }
+
+
+
+.news-container{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 10px;
+    height: 500px;
+    width: 300px;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+    box-shadow: 5px 5px 5px rgb(58, 58, 58);
+}
+
 
 .news{
     height: 500px;
     width: 300px;
-    margin: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(252, 253, 229);
     transition: all 0.4s ease;
+    position: relative;
+    z-index: 89;
+    border-radius: 10px;
     
 }
+
+/* bookmark icon */
+
+
+.bookmark{
+    width: 40%;
+    position: absolute;
+    top: 90%;
+    right: -130px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    /* background: linear-gradient(to right, rgb(214, 214, 214), rgb(167, 167, 167)); */
+    background: rgba(180, 180, 180, 0.4);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+}
+
+.bk{
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 14px;
+}
+
+.bookmark:hover{
+    background: rgba(127, 129, 255, 0.7);
+    cursor: pointer;
+}
+
+
+
+.fas{
+    color: rgb(255, 0, 0);
+    font-size: 24px;
+    margin: 5px 7px;
+}
+
+
 .main-content{
     margin: 10px 5px;
     text-align: justify;
     padding: 5px 0;
     font-size: 13px;
     font-weight: 500;
-
+    
 }
 .author-title{
     margin: 10px 0;
@@ -169,10 +225,7 @@
         grid-template-columns: 1fr;
     }
 }
-.news:hover{
-    transform: scale(1.05);
-    background: #f1e7eb;
-}
+
 
 
 
@@ -245,28 +298,145 @@
     display: none;
 }
 
+.top-bookmark-icon{
+    font-size: 30px;
+    color: rgb(253, 71, 39);
+}
 
+.top-bookmark{
+    position: fixed;
+    right: 50px;
+    top: 40px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-bookmark:hover{
+    cursor: pointer;
+    background-color: rgb(161, 161, 161);
+}
 /* side buttons */
 
 .side-btns{
     display: flex;
     flex-direction: column;
-    right: 0;
+    left: 0;
     position: fixed;
     height: 100%;
     width: 16%;
     align-items: center;
     justify-content: space-around;
     animation: slide 0.4s ease;
+    background: rgba(0,0,0,0.3);
+    z-index: 200;
 }
 
 @keyframes slide{
     0%{
-        right: -200px;
+        left: -200px;
         opacity: 0;
     }
     100%{
-        right: 0;
+        left: 0;
         opacity: 1;
     }
+}
+
+
+
+/* carrt container */
+
+.cart-container{
+    position: fixed;
+    top: 0;
+    z-index: 200;
+    right: -500px;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 30%;
+    height: 100%;
+    font-size: 13px;
+    font-family: sans-serif;
+    overflow-y: scroll;
+    transition: all 0.4s ease;
+}
+
+.cart-container>p{
+    /* border: 2px solid black; */
+    height: 7%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin: 20px;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    font-style: bold;
+    color: white;
+}
+
+.cart-items{
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    padding: 8px;
+    height: 10%;
+    align-items: center;
+    background-color: rgba(138, 138, 138, 0.9);
+    margin-bottom: 40px;
+    box-shadow: 2px 2px 2px rgb(255, 207, 185);
+    color: white;
+}
+
+.cart-title{
+    /* border: 2px solid black; */
+    margin: 5px;
+    height: 100%;
+    width: 90%;
+}
+
+.line{
+    border: 1px solid gray;
+    margin: 22px 0;
+    width: 100%;
+}
+
+.trash{
+    /* border: 1px solid black; */
+    width: 50px;
+    text-align: center;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -20px;
+   
+    background-color: rgb(236, 236, 236);
+    color: rgb(34, 34, 34);
+    transition: all 0.2s ease;
+}
+.fa-trash{
+    font-size: 16px;
+}
+
+.fa-times{
+    color: white;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 23px;
+    padding: 10px;
+}
+.fa-times:hover{
+    cursor: pointer;
+    background: rgb(102, 102, 102);
+}
+
+.trash:hover{
+    cursor: pointer;
+    background-color: rgb(148, 148, 148);
+    color: white;
 }
