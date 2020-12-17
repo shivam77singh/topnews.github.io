@@ -389,6 +389,8 @@
     margin-bottom: 40px;
     box-shadow: 2px 2px 2px rgb(255, 207, 185);
     color: white;
+    transition: all 1s ease;
+    /* position: absolute; */
 }
 
 .cart-title{
@@ -420,6 +422,7 @@
 }
 .fa-trash{
     font-size: 16px;
+    padding: 20px;
 }
 
 .fa-times{
