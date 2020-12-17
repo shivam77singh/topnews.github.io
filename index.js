@@ -93,7 +93,7 @@ for (let i = 0; i < 6; i++) {
                         //         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                         //             Deserunt sequi laboriosam</p>
                         //         <div class="line"></div>
-                        //         </div>
+                        //      </div>
                         //      <div class="trash">
                         //           <i class="fa fa-trash"></i>
                         //      </div>
@@ -107,10 +107,11 @@ for (let i = 0; i < 6; i++) {
                         let nodes = news[key].childNodes[1];
                         let cart_title = document.createElement('div');
                         cart_title.className = 'cart-title';
-                        cart_title.innerText = nodes.childNodes[3].innerText;
+
 
                         //cart-title p
                         let cart_title_p = document.createElement('p');
+                        cart_title_p.innerText = nodes.childNodes[3].innerText;
 
                         //line DIV
                         let line = document.createElement('div');
@@ -132,29 +133,36 @@ for (let i = 0; i < 6; i++) {
 
 
                         document.querySelector('.cart-container').style.right = '0px';
+                        //document.getElementsByClassName('cart-items').style.opacity = '1';
 
+                        // cart_items.right = '-100px';
 
-                        
 
 
                         // delete items of bookmarked list
 
-                     let trash_delete = document.getElementsByClassName('trash');
-                    //  let cart_items = document.getElementsByClassName('cart-items');
-                     for (let i = 0; i < trash_delete.length; i++) {
-                         console.log(i);
-                         console.log(trash_delete[i].parentElement);
-                         trash_delete[i].addEventListener('click', () => {
-                             trash_delete[i].parentElement.remove();
-                         });
-                     }
+                        let trash_delete = document.getElementsByClassName('fa-trash');
+                        //  let cart_items = document.getElementsByClassName('cart-items');
+
+                        for (let i = 0; i < trash_delete.length; i++) {
+
+                            //  console.log(i);
+                            // console.log(trash_delete[key].parentElement);
+                            // let x = document.getElementsByClassName('cart-items')[i];
+                            trash_delete[i].addEventListener(('click'), (e) => { 
+                                console.log( e.target.parentElement);
+                                // e.target.parentElement.remove();
+                                console.log(e.target);
+                                e.target.parentElement.parentElement.remove();
+                            });
+                        }
 
 
 
                     });
 
 
-                    
+
 
 
                 }
@@ -291,11 +299,11 @@ for (let i = 0; i < 6; i++) {
 document.querySelector('.top-bookmark').addEventListener('click', () => {
     console.log('uyt');
     console.log(document.querySelector('.cart-container').style.right);
-    if(document.querySelector('.cart-container').style.right === '-500px'){
+    if (document.querySelector('.cart-container').style.right === '-500px') {
         document.querySelector('.top-bookmark').style.display = 'none';
         document.querySelector('.cart-container').style.right = '0px';
     }
-    else{
+    else {
         document.querySelector('.cart-container').style.right = '-500px';
         document.querySelector('.top-bookmark').style.display = 'flex';
     }
@@ -304,7 +312,7 @@ document.querySelector('.top-bookmark').addEventListener('click', () => {
 //hiding bookmark container
 
 document.querySelector('.fa-times').addEventListener('click', () => {
-    if(document.querySelector('.cart-container').style.right === '0px'){
+    if (document.querySelector('.cart-container').style.right === '0px') {
         document.querySelector('.cart-container').style.right = '-500px';
         document.querySelector('.top-bookmark').style.display = 'flex';
     }
