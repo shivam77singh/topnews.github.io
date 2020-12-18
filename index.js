@@ -297,6 +297,12 @@ for (let i = 0; i < 6; i++) {
                     });
 
                     news[key].addEventListener('click', () => {
+
+                        if (document.querySelector('.cart-container').style.right === '0px') {
+                            document.querySelector('.cart-container').style.right = '-500px';
+                        }
+                        // console.log(news[key]);
+
                         // console.log(news[key]);
                         let nodes = news[key].childNodes;
                         // console.log(nodes);
