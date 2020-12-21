@@ -106,7 +106,7 @@ for (let i = 0; i < 6; i++) {
 
                         // console.log(bookmark[key], 'key');
                         // let str = `
-                        //  <div class="cart-items">
+                        //  <div class="cart-items ${key}">
                         //     <div class="cart-title">
                         //         <p class="cart-title-p">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                         //             Deserunt sequi laboriosam</p>
@@ -156,8 +156,9 @@ for (let i = 0; i < 6; i++) {
 
                             cart_container.appendChild(cart_items);
 
-
+                        
                             document.querySelector('.cart-container').style.right = '0px';
+                            
                             //document.getElementsByClassName('cart-items').style.opacity = '1';
 
                             // cart_items.right = '-100px';
