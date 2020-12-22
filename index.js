@@ -156,9 +156,9 @@ for (let i = 0; i < 6; i++) {
 
                             cart_container.appendChild(cart_items);
 
-                        
+
                             document.querySelector('.cart-container').style.right = '0px';
-                            
+
                             //document.getElementsByClassName('cart-items').style.opacity = '1';
 
                             // cart_items.right = '-100px';
@@ -247,18 +247,18 @@ for (let i = 0; i < 6; i++) {
                                     let cnt = document.getElementById('img');
 
                                     let page = document.getElementsByClassName('active-news-container');
-                                
+
                                     window.addEventListener('click', function (e) {
                                         if (e.target === page[0]) {
                                             page[0].style.display = 'none';
                                             elem.remove();
                                         }
-    
-    
+
+
                                     });
                                 });
 
-                               
+
                             }
                         }
 
@@ -443,29 +443,64 @@ document.querySelector('.fa-times').addEventListener('click', () => {
 // writing effect
 
 
-const texts = ["Get the Worlds Best News ", "Get the Latest Updates ", "Get the Top Headlines "];
+const texts = ["Worlds Best News", "Latest Updates", "Top Headlines"];
 let id = 0;
 let str_id = 0;
 let str = "";
-
-(function add_effect() {
-    str += texts[id][str_id];
-    str_id++;
-    if (texts[id].length == str.length) {
-
-        id++;
-        if (id >= texts.length) {
-            id = 0;
-        }
-        str_id = 0;
-        str = "";
+function check() {
+    if (str.length < texts[id].length) {
+        setTimeout(type, 120);
     }
+    else {
+        if (str_id === texts[id].length) {
+            setTimeout(erase, 1500);
+        }
+        else {
+            setTimeout(erase, 60);
+        }
 
+    }
+}
+
+
+function type() {
+    str += texts[id][str_id];
     document.querySelector('.text').innerHTML = str;
-    setTimeout(add_effect, 170);
+    console.log(str);
+    str_id++;
+    check();
+}
 
-})();
+function erase() {
+    {
+        document.querySelector('.text').innerHTML = str.substr(0, str_id - 1);
+        str_id--;
+        if (str_id === 0) {
+            str = '';
+            id++;
+            id %= 3;
+        }
+        check();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(check, 1000);
+});
 
 
+//ading animation to btns
 
+document.addEventListener('DOMContentLoaded', () => {
+    let btns = document.querySelector('.btns');
+    btns.classList.add('animate-btns');
+
+    let head = document.querySelector('.head');
+    head.classList.add('animate-head');
+    
+    // document.querySelector('.bg').classList.add('animate-bg');
+    // document.querySelector('.highlight-line').classList.add('animate-line');
+
+
+});
 
